@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>Simple Calendar</title>
+	<style>
+	
+	</style>
+</head>
+
+<body>
+ <label for="month">Select month: </label>
+ <select id="month">
+  <option value="January">January</option>
+	<option value="Feburary">Feburary</option>
+	<option value="March">March</option>
+	<option value="April">April</option>
+	<option value="May">May</option>
+	<option value="June">June</option>
+	<option value="July">July</option>
+	<option value="August">August</option>
+	<option value="September">September</option>
+	<option value="October">October</option>
+	<option value="November">November</option>
+	<option value="December">December</option>
+ </select>
+ 
+ <h1 id="month_selected">January</h1>
+ 
+ <ul id='days'></ul>
+ 
+ <script>
+  var bigMonth = ['January', 'March', 'May', 'July', 'August', 'October', 'December'];
+	
+	var select = document.querySelector('select');
+	select.onchange = function() {
+	  var month = select.value;
+		var days = 31;
+		
+		if(month === 'Feburary') {
+		  days = 28;
+		} else if(bigMonth.join(',').indexOf(month) === -1){
+		  days = 30;
+		}
+		
+		createCalendar(days, month);
+	}
+	
+	function createCalendar(days, month) {
+	  var text = document.getElementById('month_selected');
+	  text.textContent = month;
+		
+		var list = document.getElementById('days');
+		list.innerHTML = '';
+		for(var i=1; i<=days; i++) {
+		  var li = document.createElement('li');
+			li.textContent = i.toString();
+		  list.appendChild(li);
+		}
+	}
+ </script>
+ 
+</body>
+</html>
