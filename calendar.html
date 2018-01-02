@@ -5,7 +5,22 @@
   <meta charset="utf-8">
 	<title>Simple Calendar</title>
 	<style>
-	
+
+  ul {
+    width: 100%;
+  }
+
+  ul li {
+    width: 20%;
+    background-color: #f02880;
+    line-height: 2;
+    list-style: none;
+    float: left;
+    color: white;
+    font-weight: bold;
+    padding-left: 4px;
+    margin: 2px;
+  }
 	</style>
 </head>
 
@@ -25,32 +40,32 @@
 	<option value="November">November</option>
 	<option value="December">December</option>
  </select>
- 
+
  <h1 id="month_selected">January</h1>
- 
+
  <ul id='days'></ul>
- 
+
  <script>
   var bigMonth = ['January', 'March', 'May', 'July', 'August', 'October', 'December'];
-	
+
 	var select = document.querySelector('select');
 	select.onchange = function() {
 	  var month = select.value;
 		var days = 31;
-		
+
 		if(month === 'Feburary') {
 		  days = 28;
 		} else if(bigMonth.join(',').indexOf(month) === -1){
 		  days = 30;
 		}
-		
+
 		createCalendar(days, month);
 	}
-	
+
 	function createCalendar(days, month) {
 	  var text = document.getElementById('month_selected');
 	  text.textContent = month;
-		
+
 		var list = document.getElementById('days');
 		list.innerHTML = '';
 		for(var i=1; i<=days; i++) {
@@ -60,6 +75,6 @@
 		}
 	}
  </script>
- 
+
 </body>
 </html>
